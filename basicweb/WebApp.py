@@ -1,4 +1,5 @@
 from selenium import webdriver
+import selenium
 import os
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
@@ -10,7 +11,7 @@ class WebApp(object):
 
     def TestApp(self):
         driverLocation = "../Drivers/chromedriver.exe"
-        baseURL = "https://letskodeit.teachable.com/p/practice"
+        baseURL = "http://localhost:80/"
         os.environ["webdriver.chrome.driver"] = driverLocation
         driver = webdriver.Chrome(driverLocation)
         driver.implicitly_wait(50)
@@ -19,6 +20,13 @@ class WebApp(object):
             driver.maximize_window()
             driver.get(baseURL)
             print("The Browser launched and navigated to URL")
+
+            element = driver.find_element(By.XPATH, ".//body//h1")
+            appText = element.text
+            print(appText)
+
+            #result = self.assertEqual("This is my website", appText, "Actual and Expected text are equal.")
+            # print(result)
 
         except AttributeError:
             print(AttributeError)
