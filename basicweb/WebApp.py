@@ -1,5 +1,6 @@
 from selenium import webdriver
 import selenium
+import unittest
 import os
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
@@ -12,7 +13,7 @@ class WebApp(object):
     def TestApp(self):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--headless')
-        driverLocation = "../Drivers/chromedriver.exe"
+        driverLocation = "../Drivers/chromedriver"
         baseURL = "http://localhost:80/"
         os.environ["webdriver.chrome.driver"] = driverLocation
         driver = webdriver.Chrome(driverLocation)
@@ -26,9 +27,7 @@ class WebApp(object):
             element = driver.find_element(By.XPATH, ".//body//h1")
             appText = element.text
             print(appText)
-
-            #result = self.assertEqual("This is my website", appText, "Actual and Expected text are equal.")
-            # print(result)
+            assert appText == 'This is my website'
 
         except AttributeError:
             print(AttributeError)
