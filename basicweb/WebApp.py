@@ -10,6 +10,8 @@ from selenium.webdriver.support import expected_conditions as EC
 class WebApp(object):
 
     def TestApp(self):
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--headless')
         driverLocation = "../Drivers/chromedriver.exe"
         baseURL = "http://localhost:80/"
         os.environ["webdriver.chrome.driver"] = driverLocation
