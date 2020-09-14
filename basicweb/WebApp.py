@@ -14,7 +14,7 @@ class WebApp(object):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--headless')
         driverLocation = "../Drivers/chromedriver"
-        baseURL = "http://localhost:80/"
+        baseURL = "http://localhost:85/"
         os.environ["webdriver.chrome.driver"] = driverLocation
         driver = webdriver.Chrome(driverLocation)
         driver.implicitly_wait(50)
